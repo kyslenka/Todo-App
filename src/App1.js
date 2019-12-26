@@ -4,10 +4,7 @@ import AddTodo from "./AddTodo";
 
 class App extends Component {
   state = {
-    todos: [
-      { id: 1, content: "buy some milk" },
-      { id: 2, content: "play game" }
-    ]
+    todos: []
   };
   deleteTodo = id => {
     const todos = this.state.todos.filter(todo => {
@@ -28,8 +25,8 @@ class App extends Component {
     return (
       <div className="todo-app container">
         <h1 className="center blue-text">Todo's List</h1>
-        <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
         <AddTodo addTodo={this.addTodo} />
+        <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
       </div>
     );
   }
