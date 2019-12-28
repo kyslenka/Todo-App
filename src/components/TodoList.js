@@ -2,12 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import Todo from "./Todo";
 
-const TodoList = ({ todos, toggleTodo }) => (
-  <ul>
-    {todos.map(todo => (
-      <Todo key={todo.id} {...todo} onClick={() => toggleTodo(todo.id)} />
-    ))}
-  </ul>
+const TodoList = ({ todos, toggleTodo, removeTodo }) => (
+  <div className="column">
+    <div>
+      {todos.map(todo => (
+        <Todo
+          key={todo.id}
+          {...todo}
+          onClick={() => toggleTodo(todo.id)}
+          ondblClick={() => removeTodo(todo.id)}
+        />
+      ))}
+    </div>
+  </div>
 );
 
 TodoList.propTypes = {
@@ -18,7 +25,8 @@ TodoList.propTypes = {
       text: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  toggleTodo: PropTypes.func.isRequired
+  toggleTodo: PropTypes.func.isRequired,
+  removeTodo: PropTypes.func.isRequired
 };
 
 export default TodoList;
